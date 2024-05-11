@@ -6,7 +6,7 @@
 
 ## Trello
 
-Para ver las tareas y el seguimiento del proyecto, ir a [Trello](https://trello.com/b/DwOSld87/alquiler-de-autos).
+Para ver las tareas y el seguimiento del proyecto, ir a [Trello](https://trello.com/invite/b/DwOSld87/ATTIce33c4ef859b7a25149cdf39fcf7c9560E548510/alquiler-de-autos).
 
 ## Setup
 
