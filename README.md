@@ -10,7 +10,7 @@ Para ver las tareas y el seguimiento del proyecto, ir a [Trello](https://trello.
 
 ## Setup
 
-1. Descargar Laragons desde el siguiente enlace: [Laragon Wamp](https://github.com/leokhoa/laragon/releases/download/6.0.0/laragon-wamp.exe)
+1. Descargar Laragon desde el siguiente enlace: [Laragon Wamp](https://github.com/leokhoa/laragon/releases/download/6.0.0/laragon-wamp.exe)
 2. Clonar este proyecto en `C:\laragon\www\`
 
 ## Run
