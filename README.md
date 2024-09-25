@@ -6,7 +6,7 @@
 
 ## Trello
 
-Para ver las tareas y el seguimiento del proyecto, ir a [Trello](https://trello.com/invite/b/DwOSld87/ATTIce33c4ef859b7a25149cdf39fcf7c9560E548510/alquiler-de-autos).
+Para ver las tareas y el seguimiento del proyecto, ir a [Trello](https://trello.com/invite/b/DwOSld87/ATTIce33c4ef859b7a25149cdf39fcf7c9560E548510/alquiler-de-autos)
 
 ## Setup
 
@@ -15,6 +15,7 @@ Para ver las tareas y el seguimiento del proyecto, ir a [Trello](https://trello.
 
 ## Run
 
-1. Abrir Laragon y presionar en "Iniciar Todo".
-2. Ingresar a [http://localhost/car-rental/public/](http://localhost/car-rental/public/)
-3. ¡Happy coding! 🎉
+1. Crear un .env y copiar todo lo que está en .env.test
+2. Abrir Laragon y presionar en "Iniciar Todo"
+3. Ingresar a [http://localhost/car-rental/public/](http://localhost/car-rental/public/)
+4. ¡Happy coding! 🎉
