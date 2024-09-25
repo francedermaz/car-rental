@@ -16,5 +16,5 @@ Para ver las tareas y el seguimiento del proyecto, ir a [Trello](https://trello.
 ## Run
 
 1. Abrir Laragon y presionar en "Iniciar Todo".
-2. Ingresar a [http://localhost/car-rental/main.html](http://localhost/car-rental/index.html)
+2. Ingresar a [http://localhost/car-rental/public/](http://localhost/car-rental/public/)
 3. ¡Happy coding! 🎉
