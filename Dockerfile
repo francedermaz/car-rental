@@ -21,20 +21,25 @@ ENV PATH="$HOME/.symfony*/bin:$PATH"
 # Crea un nuevo usuario para evitar ejecutar como root
 RUN useradd -m symfonyuser
 
+# Copia los archivos del proyecto al directorio de trabajo como usuario root
+COPY ./public /var/www/html/public/
+COPY ./composer.json /var/www/html/
+COPY ./composer.lock /var/www/html/
+
 # Cambia al nuevo usuario
 USER symfonyuser
 
 # Configura el directorio de trabajo
 WORKDIR /var/www/html/public
 
-# Copia los archivos del proyecto
-COPY --chown=symfonyuser:symfonyuser . .
-
 # Instala Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Instala las dependencias de Symfony sin ejecutar scripts
 RUN composer install --no-dev --optimize-autoloader --no-scripts
+
+# Establece los permisos correctos para la carpeta de trabajo
+RUN chown -R symfonyuser:symfonyuser /var/www/html
 
 # Expone el puerto 80 para la aplicación
 EXPOSE 80
