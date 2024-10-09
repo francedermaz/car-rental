@@ -1,8 +1,10 @@
+version: 1
 services:
   - type: web
-    name: tu-aplicacion-symfony
-    env: php
+    name: mi-aplicacion-php
+    env: docker
+    docker:
+      dockerfilePath: ./Dockerfile
     plan: free
-    buildCommand: "composer install --no-dev --optimize-autoloader"
-    startCommand: "php -S 0.0.0.0:10000 -t public"
-    autoDeploy: true
+    regions:
+      - oregon
