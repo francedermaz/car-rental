@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="login-container">
+        <form class="login-form" action="{{ path('app_login') }}" method="post">
+            <h2>Inicia sesión</h2>
+            <label for="username" class="label">Email:</label>
+            <input type="text" class="input" id="username" name="_username" value="{{ last_username }}"/>
+            <label for="password" class="label">Password:</label>
+            <input type="password" class="input" id="password" name="_password"/>
+            <button class="submit-button" type="submit">Ingresar</button>
+
+            {% if error %}
+                <div class="error">Usuario o contraseña incorrecta</div>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}
