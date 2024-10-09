@@ -28,7 +28,7 @@ USER symfonyuser
 WORKDIR /var/www/html/public
 
 # Copia los archivos del proyecto
-COPY --chown=symfonyuser:symfonyuser . /var/www/html/
+COPY --chown=symfonyuser:symfonyuser . .
 
 # Instala Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
