@@ -25,7 +25,7 @@ RUN useradd -m symfonyuser
 USER symfonyuser
 
 # Configura el directorio de trabajo
-WORKDIR /var/www/html
+WORKDIR /var/www/html/public
 
 # Copia los archivos del proyecto
 COPY --chown=symfonyuser:symfonyuser . .
