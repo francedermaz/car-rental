@@ -36,8 +36,8 @@ USER symfonyuser
 # Instala las dependencias de Symfony sin ejecutar scripts
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Cambia el directorio de trabajo a public
-WORKDIR /var/www/html/public
+# Cambia el directorio de trabajo
+WORKDIR /var/www/html
 
 # Expone el puerto 80 para la aplicación
 EXPOSE 80
