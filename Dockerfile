@@ -1,7 +1,6 @@
-# Usa la imagen oficial de PHP
 FROM php:8.1-apache
 
-# Instala las dependencias necesarias para Symfony
+# Install dependencies for Symfony (modify as needed)
 RUN apt-get update && apt-get install -y \
     libicu-dev \
     libpq-dev \
@@ -11,34 +10,27 @@ RUN apt-get update && apt-get install -y \
     wget \
     && docker-php-ext-install intl pdo pdo_pgsql opcache
 
-# Habilita mod_rewrite para Apache
+# Enable mod_rewrite for Apache
 RUN a2enmod rewrite
 
-# Instala Symfony CLI
-RUN wget https://get.symfony.com/cli/installer -O - | bash
-ENV PATH="$HOME/.symfony*/bin:$PATH"
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
 
-# Crea un nuevo usuario para evitar ejecutar como root
-RUN useradd -m symfonyuser
+# Create a user for running the application (security best practice)
+RUN adduser -D symfonyuser
 
-# Configura el directorio de trabajo
+# Set working directory within the container
 WORKDIR /var/www/html
 
-# Copia los archivos del proyecto, incluyendo el composer.json
-COPY --chown=symfonyuser:symfonyuser . .
+# Copy your application files here
+COPY . .
 
-# Instala Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Cambia la propiedad de los archivos al nuevo usuario
-RUN chown -R symfonyuser:symfonyuser /var/www/html
-
-# Instala las dependencias de Symfony sin ejecutar scripts
-USER symfonyuser
+# Install dependencies (adjust for your project)
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Expone el puerto 80 para la aplicación
+# Expose port 80
 EXPOSE 80
 
-# Establece el comando predeterminado para iniciar Apache
+# Command to start Apache in the foreground (good for development)
 CMD ["apache2-foreground"]
