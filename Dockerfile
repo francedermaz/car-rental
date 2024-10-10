@@ -24,6 +24,8 @@ RUN useradd -m symfonyuser
 # Copia los archivos del proyecto, incluyendo el composer.json
 COPY --chown=symfonyuser:symfonyuser . .
 
+COPY --chown=symfonyuser:symfonyuser .env ./
+
 # Instala Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
