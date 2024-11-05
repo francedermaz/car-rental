@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registrarse{% endblock %}
+
+{% block page_stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="login-container">
+        <form class="login-form" action="{{ path('registrar_usuario') }}" method="post">
+            <h2 class="title">Registrarse</h2>
+            <label for="nombre" class="label" required>Nombre</label>
+            <input type="text" class="input" required id="nombre" name="nombre"/>
+            <label for="apellido" class="label" required>Apellido</label>
+            <input type="text" class="input" required id="apellido" name="apellido"/>
+            <label for="dni" class="label" required>Dni</label>
+            <input type="text" class="input" required id="dni" name="dni"/>
+            <label for="username" class="label">Email</label>
+            <input type="text" class="input" required id="username" name="username"/>
+            <label for="password" class="label" required>Password</label>
+            <input type="password" class="input" required id="password" name="password"/>
+            <button class="submit-button" type="submit">Registrarse</button>
+        </form>
+    </div>
+{% endblock %}
