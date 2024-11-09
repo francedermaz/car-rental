@@ -6,9 +6,11 @@ use App\Repository\UsuarioRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UsuarioRepository::class)]
-class Usuario
+class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -24,7 +26,7 @@ class Usuario
     #[ORM\Column]
     private ?int $dni = null;
 
-    #[ORM\Column(length: 254)]
+    #[ORM\Column(length: 254, unique: true)]
     private ?string $email = null;
 
     #[ORM\Column(length: 254)]
@@ -57,7 +59,6 @@ class Usuario
     public function setNombre(string $nombre): static
     {
         $this->nombre = $nombre;
-
         return $this;
     }
 
@@ -69,7 +70,6 @@ class Usuario
     public function setApellido(string $apellido): static
     {
         $this->apellido = $apellido;
-
         return $this;
     }
 
@@ -81,7 +81,6 @@ class Usuario
     public function setDni(int $dni): static
     {
         $this->dni = $dni;
-
         return $this;
     }
 
@@ -93,7 +92,6 @@ class Usuario
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -105,7 +103,6 @@ class Usuario
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
     }
 
@@ -117,8 +114,24 @@ class Usuario
     public function setRol(string $rol): static
     {
         $this->rol = $rol;
-
         return $this;
+    }
+
+    public function getRoles(): array
+    {
+        return [$this->rol];
+    }
+
+    public function eraseCredentials() {}
+
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
+    }
+
+    public function getUsername(): string
+    {
+        return $this->email;
     }
 
     /**
@@ -135,19 +148,16 @@ class Usuario
             $this->reservas->add($reserva);
             $reserva->setUsuario($this);
         }
-
         return $this;
     }
 
     public function removeReserva(Reserva $reserva): static
     {
         if ($this->reservas->removeElement($reserva)) {
-            // set the owning side to null (unless already changed)
             if ($reserva->getUsuario() === $this) {
                 $reserva->setUsuario(null);
             }
         }
-
         return $this;
     }
 }
