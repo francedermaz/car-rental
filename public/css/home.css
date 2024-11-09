@@ -1,0 +1,51 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #139bb4;
+    color: white;
+}
+
+.logo-container .logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 40px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.reservas-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.reservas-link:hover {
+    color: #5ac7da; /* Efecto hover */
+}
+
+.user-icon {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.user-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.user-icon:hover {
+    background-color: #5ac7da;
+    border-radius: 50%;
+    padding: 5px;
+}

@@ -22,7 +22,7 @@ class UsuarioManager
         $usuario->setDni($dni);
         $usuario->setEmail($email);
         $usuario->setPassword($password);
-        $usuario->setRol("user");
+        $usuario->setRol("ROLE_USER");
         
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $usuario->setPassword($hashedPassword);
