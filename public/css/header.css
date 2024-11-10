@@ -1,10 +1,15 @@
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
     background-color: #139bb4;
     color: white;
+    padding-left: 20px;
+    height: 60px;
 }
 
 .logo-container .logo {
@@ -12,14 +17,19 @@
     align-items: center;
 }
 
+.logo:hover {
+    background-color: #5ac7da;
+}
+
 .logo-image {
-    height: 40px;
+    height: 60px;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
     gap: 20px;
+    padding-right: 40px;
 }
 
 .reservas-link {
@@ -29,13 +39,15 @@
 }
 
 .reservas-link:hover {
-    color: #5ac7da; /* Efecto hover */
+    color: #5ac7da;
 }
 
 .user-icon {
     display: flex;
     align-items: center;
     padding: 5px;
+    width: 30px;
+    height: 30px;
 }
 
 .user-image {

@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block body %}
+    {% include 'header.html.twig' %}
     <div class="login-container">
         <form class="login-form" action="{{ path('app_login') }}" method="post">
             <h2 class="title">Iniciar sesión</h2>

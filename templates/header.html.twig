@@ -1,9 +1,17 @@
+{# header.html.twig #}
+<link rel="stylesheet" rel="preload" href="{{ asset('css/header.css') }}">
+
 <header class="header">
     <div class="logo-container">
-
+        <a href="{{ path('app_home') }}" class="logo">
+            <img src="{{ asset('images/cars.webp') }}" alt="Logo" class="logo-image">
+        </a>
     </div>
 
     <nav class="nav-links">
-
+        <a href="{{ path('app_home') }}" class="reservas-link">Mis Reservas</a>
+        <a href="{{ path('app_login') }}" class="user-icon">
+            <img src="{{ asset('images/user.png') }}" alt="Usuario" class="user-image">
+        </a>
     </nav>
 </header>
