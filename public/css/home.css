@@ -1,0 +1,15 @@
+.home-container {
+    background-color: white;
+    height: calc(100vh - 60px);
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    color: #000000;
+    margin-top: 30px;
+}
