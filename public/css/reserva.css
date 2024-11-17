@@ -1,0 +1,38 @@
+.reserva-container{
+    background-color: white;
+    width: 100%;
+    height: calc(100vh - 60px);
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.reserva-card{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 40px;
+}
+
+.formulario-reserva{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formulario-reserva button{
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;    
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 10em;
+    border-radius: 5px;
+    margin-right: 40px;
+}
+
+.formulario-reserva button:hover{
+    background-color: #0056b3;
+}

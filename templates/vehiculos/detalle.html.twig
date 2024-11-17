@@ -18,8 +18,8 @@
                 <h2>{{ vehiculo.marca }} {{ vehiculo.modelo }}</h2>
                 <p class="detalle">{{ vehiculo.detalle }}</p>
                 <p><strong>Año:</strong> {{ vehiculo.year }}</p>
-                <p><strong>Valor:</strong> ${{ vehiculo.valor }}</p>
-                <a href="{{ path('app_home') }}" class="button">Reservar</a>
+                <p><strong>Valor diario:</strong> ${{ vehiculo.valor }}</p>
+                <a href="{{ path('reservar_vehiculo', {'vehiculo_id': vehiculo.id}) }}" class="button">Reservar</a>
             </div>
         </div>
     </div>
