@@ -15,4 +15,11 @@ class VehiculosController extends AbstractController
         $vehiculos = $vehiculoManager->getVehiculos();
         return $this->render('vehiculos/vehiculos.html.twig', ['vehiculos' => $vehiculos]);
     }
+
+    #[Route('/vehiculo/{id}', name: 'detalle_vehiculo')]
+    public function detalleVehiculo(VehiculoManager $vehiculoManager, string $id): Response
+    {
+        $vehiculo = $vehiculoManager->getVehiculo($id);
+        return $this->render('vehiculos/detalle.html.twig', ['vehiculo' => $vehiculo]);
+    }
 }

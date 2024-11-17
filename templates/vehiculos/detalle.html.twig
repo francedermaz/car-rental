@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalle del Vehículo - {{ vehiculo.marca }} {{ vehiculo.modelo }}{% endblock %}
+
+{% block page_stylesheets %}
+    <link rel="stylesheet" rel="preload" href="{{ asset('css/detalle.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include 'header.html.twig' %}
+
+    <div class="detalle-container">
+        <div class="detalle-card">
+            <div class="detalle-image">
+                <img src="{{ vehiculo.imagen }}" alt="{{ vehiculo.marca }} {{ vehiculo.modelo }}" class="detalle-image">
+                <a href="{{ path('app_home') }}" class="button">Reservar</a>
+            </div>
+            <div class="detalle-info">
+                <h2>{{ vehiculo.marca }} {{ vehiculo.modelo }}</h2>
+                <p>{{ vehiculo.detalle }}</p>
+                <p><strong>Año:</strong> {{ vehiculo.year }}</p>
+                <p><strong>Valor:</strong> ${{ vehiculo.valor }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

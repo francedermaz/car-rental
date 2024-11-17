@@ -17,10 +17,10 @@
                     <img src="{{ vehiculo.imagen }}" alt="{{ vehiculo.marca }} {{ vehiculo.modelo }}" class="vehiculo-image">
                     <div>
                         <h3>{{ vehiculo.marca }} {{ vehiculo.modelo }}</h3>
-                        <p>{{ vehiculo.detalle }}</p>
+                        <p>{{ vehiculo.detalle|slice(0, 50) ~ '...' }}</p>
                         <p>Año: {{ vehiculo.year }}</p>
                         <p>Valor: ${{ vehiculo.valor }}</p>
-                        <button>Ver detalles</button>
+                        <a href="{{ path('detalle_vehiculo', { id: vehiculo.id }) }}" class="button">Ver detalle</a>
                     </div>
                 </div>
             {% endfor %}

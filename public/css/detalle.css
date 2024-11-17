@@ -1,0 +1,53 @@
+.detalle-container {
+    background-color: white;
+    width: 100%;
+    height: calc(100vh - 60px);
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.detalle-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 3em;
+    gap: 5em;
+}
+
+.detalle-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.detalle-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detalle-image{
+    width: 700px;
+    height: 550px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 10em;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}

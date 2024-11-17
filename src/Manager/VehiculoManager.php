@@ -17,4 +17,10 @@ class VehiculoManager
     {
         return $this->vehiculoRepository->findAll();
     }
+
+    public function getVehiculo(string $id)
+    {
+        $vehiculo = $this->vehiculoRepository->find($id);
+        return $vehiculo;
+    }
 }
