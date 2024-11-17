@@ -11,5 +11,19 @@
     
     <div class="home-container">
         <h1 class="title">Elegí que auto querés reservar</h1>
+        <div class="vehiculos-container">
+            {% for vehiculo in vehiculos %}
+                <div class="vehiculo-card">
+                    <img src="{{ vehiculo.imagen }}" alt="{{ vehiculo.marca }} {{ vehiculo.modelo }}" class="vehiculo-image">
+                    <div>
+                        <h3>{{ vehiculo.marca }} {{ vehiculo.modelo }}</h3>
+                        <p>{{ vehiculo.detalle }}</p>
+                        <p>Año: {{ vehiculo.year }}</p>
+                        <p>Valor: ${{ vehiculo.valor }}</p>
+                        <button>Reservar</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
