@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Perfil de Usuario{% endblock %}
+
+{% block page_stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/perfil.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include 'header.html.twig' %}
+
+    <div class="perfil-container">
+        <div class="image-container">
+            <img src="{{ asset('images/user.png') }}" alt="Usuario" class="user-profile-pic">
+        </div>
+        <h2 class="perfil-title">Mi perfil</h2>
+
+        <div class="perfil-details">
+            <div class="perfil-item">
+                <span class="perfil-label">Nombre:</span>
+                <span class="perfil-value">{{ usuario.nombre }}</span>
+            </div>
+            <div class="perfil-item">
+                <span class="perfil-label">Apellido:</span>
+                <span class="perfil-value">{{ usuario.apellido }}</span>
+            </div>
+            <div class="perfil-item">
+                <span class="perfil-label">DNI:</span>
+                <span class="perfil-value">{{ usuario.dni }}</span>
+            </div>
+            <div class="perfil-item">
+                <span class="perfil-label">Email:</span>
+                <span class="perfil-value">{{ usuario.email }}</span>
+            </div>
+        </div>
+
+        <div class="perfil-actions">
+            <a href="{{ path('editar_datos_usuario') }}" class="button">Editar Datos</a>
+        </div>
+    </div>
+{% endblock %}

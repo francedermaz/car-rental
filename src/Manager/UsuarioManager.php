@@ -32,4 +32,15 @@ class UsuarioManager
         $this->entityManager->persist($usuario);
         $this->entityManager->flush();
     }
+
+    public function actualizarUsuario(Usuario $usuario, string $nombre, string $apellido, string $dni, string $email): void
+    {
+        $usuario->setNombre($nombre);
+        $usuario->setApellido($apellido);
+        $usuario->setDni($dni);
+        $usuario->setEmail($email);
+
+        $this->entityManager->persist($usuario);
+        $this->entityManager->flush();
+    }
 }
