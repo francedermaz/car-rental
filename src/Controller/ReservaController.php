@@ -24,13 +24,18 @@ class ReservaController extends AbstractController
             $usuario = $this->getUser();
             $reservaManager->crearReserva($usuario, $vehiculo, $fechaInicio, $fechaFinalizacion, $cantidadPersonas, $total);
 
-            // TODO: Redirect to pagina de success, armarla
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('reserva_success');
         }
 
         return $this->render('reserva/reserva.html.twig', [
             'vehiculo' => $vehiculo
         ]);
+    }
+
+    #[Route('/reserva/success', name: 'reserva_success')]
+    public function success(): Response
+    {
+        return $this->render('reserva/success.html.twig');
     }
 
     #[Route('/reservas', name: 'reservas_usuario')]

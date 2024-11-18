@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reserva Confirmada{% endblock %}
+
+{% block page_stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/success.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include 'header.html.twig' %}
+
+    <div class="success-container">
+        <h1 class="success-title">¡Reserva Confirmada!</h1>
+        <p class="success-message">Tu reserva fue confirmada con éxito.</p>
+        <a href="{{ path('reservas_usuario') }}" class="btn-ir-mis-reservas">Ir a Mis Reservas</a>
+    </div>
+{% endblock %}

@@ -40,6 +40,8 @@ security:
         - { path: ^/reservar, roles: ROLE_USER }
         - { path: ^/finalizar-reserva, roles: ROLE_USER }
         - { path: ^/reservas_usuario, roles: ROLE_USER }
+        - { path: ^/reserva/success, roles: ROLE_USER } 
+
 
 when@test:
     security:

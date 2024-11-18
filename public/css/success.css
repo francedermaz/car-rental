@@ -1,0 +1,38 @@
+.success-container {
+    background: #f8f9fa;
+    width: 60%;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.success-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0f2c49;
+    margin-bottom: 20px;
+}
+
+.success-message {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #333333;
+}
+
+.btn-ir-mis-reservas {
+    display: inline-block;
+    text-decoration: none;
+    background: #0f2c49;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn-ir-mis-reservas:hover {
+    background: #083045;
+}
