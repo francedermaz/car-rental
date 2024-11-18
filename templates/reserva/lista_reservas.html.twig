@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mis Reservas{% endblock %}
+
+{% block page_stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/lista_reserva.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include 'header.html.twig' %}
+
+    <div class="reserva-container">
+        <h1 class="titulo-reservas">Mis Reservas</h1>
+
+        {% if reservas is not empty %}
+            <table class="tabla-reservas">
+                <thead>
+                    <tr>
+                        <th>Vehículo</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Finalización</th>
+                        <th>Cantidad de Personas</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reserva in reservas %}
+                        <tr>
+                            <td>{{ reserva.vehiculo.marca }} {{ reserva.vehiculo.modelo }}</td>
+                            <td>{{ reserva.fechaInicio|date('d-m-Y') }}</td>
+                            <td>{{ reserva.fechaFinalizacion|date('d-m-Y') }}</td>
+                            <td>{{ reserva.cantidadPersonas }}</td>
+                            <td>${{ reserva.vehiculo.valor * reserva.cantidadPersonas * reserva.fechaFinalizacion.diff(reserva.fechaInicio).days }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="mensaje-no-reservas">No tenés reservas registradas.</p>
+        {% endif %}
+    </div>
+{% endblock %}

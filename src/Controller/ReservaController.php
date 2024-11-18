@@ -32,4 +32,28 @@ class ReservaController extends AbstractController
             'vehiculo' => $vehiculo
         ]);
     }
+
+    #[Route('/reservas', name: 'reservas_usuario')]
+    public function obtenerReservasUsuario(ReservaManager $reservaManager): Response
+    {
+        $usuario = $this->getUser();
+
+        $reservas = $reservaManager->getReservas($usuario);
+
+        return $this->render('reserva/lista_reservas.html.twig', [
+            'reservas' => $reservas,
+        ]);
+    }
+
+    // #[Route('/admin/reservas', name: 'reservas_admin')]
+    // public function obtenerReservasAdmin(ReservaManager $reservaManager): Response
+    // {
+    //     $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'No tienes permiso para acceder a esta página.');
+
+    //     $reservas = $reservaManager->obtenerTodasLasReservas();
+
+    //     return $this->render('admin/lista_reservas.html.twig', [
+    //         'reservas' => $reservas,
+    //     ]);
+    // }
 }

@@ -39,6 +39,7 @@ security:
         - { path: ^/vehiculo, roles: ROLE_USER }
         - { path: ^/reservar, roles: ROLE_USER }
         - { path: ^/finalizar-reserva, roles: ROLE_USER }
+        - { path: ^/reservas_usuario, roles: ROLE_USER }
 
 when@test:
     security:
