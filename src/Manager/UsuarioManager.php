@@ -33,11 +33,17 @@ class UsuarioManager
         $this->entityManager->flush();
     }
 
-    public function actualizarUsuario(Usuario $usuario, string $nombre, string $apellido, string $dni): void
+    public function actualizarUsuario(Usuario $usuario, string $nombre, string $apellido, string $dni, string $email, string $password): void
     {
         $usuario->setNombre($nombre);
         $usuario->setApellido($apellido);
         $usuario->setDni($dni);
+        $usuario->setEmail($email);
+
+        if ($password) {
+            $hashedPassword = $this->passwordHasher->hashPassword($usuario, $password);
+            $usuario->setPassword($hashedPassword);
+        }
 
         $this->entityManager->persist($usuario);
         $this->entityManager->flush();
