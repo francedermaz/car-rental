@@ -1,0 +1,94 @@
+.detalle-container {
+    background-color: #f0f8f8;
+    width: 100%;
+    height: calc(100vh - 60px);
+    box-sizing: border-box;
+    margin-top: 60px;
+}
+
+.detalle-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: flex-start;
+    gap: 2em; 
+    padding: 20px;
+    margin-top: 2.5em;
+    width: 90%;
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.detalle-image {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.car-image {
+    width: 100%;
+    max-width: 500px; 
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 0.5px solid #e7f1ff;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.detalle-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    padding: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+form label {
+    font-size: 1.1em;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+}
+
+form input[type="url"] {
+    width: 100%;
+}
+
+form textarea {
+    resize: none;
+    height: 250px; 
+}
+
+form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+form input[type="url"]:focus,
+form input[type="text"]:focus,
+form textarea:focus {
+    outline-color: #007bff;
+}

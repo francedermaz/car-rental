@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalle - {{ vehiculo.marca }} {{ vehiculo.modelo }}{% endblock %}
+
+{% block page_stylesheets %}
+    <link rel="stylesheet" rel="preload" href="{{ asset('css/detalle.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include 'header.html.twig' %}
+
+    <div class="detalle-container">
+        <div class="detalle-card">
+            <!-- Imagen y formulario para cambiar la imagen -->
+            <div class="detalle-image">
+                <img src="{{ vehiculo.imagen }}" alt="{{ vehiculo.marca }} {{ vehiculo.modelo }}" class="car-image">
+                <form method="post" action="{{ path('actualizar_vehiculo', {'id': vehiculo.id}) }}">
+                    <label for="imagen">Nuevo link de imagen:</label>
+                    <input type="url" name="imagen" id="imagen" value="{{ vehiculo.imagen }}">
+                    <button type="submit" class="button">Cambiar Imagen</button>
+                </form>
+            </div>
+
+            <!-- Información del vehículo (Nombre y Descripción) -->
+            <div class="detalle-info">
+                <!-- Formulario para editar nombre -->
+                <form method="post" action="{{ path('actualizar_vehiculo', {'id': vehiculo.id}) }}">
+                    <div class="form-group">
+                        <label for="nombre">Nombre del Auto:</label>
+                        <input type="text" name="nombre" id="nombre" value="{{ vehiculo.marca }} {{ vehiculo.modelo }}" required>
+                    </div>
+
+                    <!-- Formulario para editar descripción -->
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea name="descripcion" id="descripcion" rows="10" required>{{ vehiculo.detalle }}</textarea>
+                    </div>
+
+                    <!-- Botón para confirmar cambios -->
+                    <button type="submit" class="button">Confirmar cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

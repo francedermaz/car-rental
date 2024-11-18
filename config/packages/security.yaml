@@ -35,12 +35,12 @@ security:
     access_control:
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/register, roles: PUBLIC_ACCESS }
-        - { path: ^/, roles: ROLE_USER }
-        - { path: ^/vehiculo, roles: ROLE_USER }
-        - { path: ^/reservar, roles: ROLE_USER }
-        - { path: ^/finalizar-reserva, roles: ROLE_USER }
-        - { path: ^/reservas_usuario, roles: ROLE_USER }
-        - { path: ^/reserva/success, roles: ROLE_USER } 
+        - { path: ^/, roles: PUBLIC_ACCESS }
+        - { path: ^/vehiculo, roles: PUBLIC_ACCESS }
+        - { path: ^/reservar, roles: PUBLIC_ACCESS }
+        - { path: ^/finalizar-reserva, roles: PUBLIC_ACCESS }
+        - { path: ^/reservas_usuario, roles: PUBLIC_ACCESS }
+        - { path: ^/reserva/success, roles: PUBLIC_ACCESS } 
 
 
 when@test:
