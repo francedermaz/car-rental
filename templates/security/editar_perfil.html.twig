@@ -27,13 +27,9 @@
                 <input type="text" id="dni" name="dni" value="{{ usuario.dni }}" required>
             </div>
 
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="{{ usuario.email }}" required>
-            </div>
-
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <button type="submit" class="btn">Guardar Cambios</button>
+                <a href="{{ path('ver_datos_usuario') }}" class="btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>

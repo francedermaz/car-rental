@@ -29,9 +29,8 @@ class UsuarioController extends AbstractController
             $nombre = $request->request->get('nombre');
             $apellido = $request->request->get('apellido');
             $dni = $request->request->get('dni');
-            $email = $request->request->get('email');
 
-            $usuarioManager->actualizarUsuario($usuario, $nombre, $apellido, $dni, $email);
+            $usuarioManager->actualizarUsuario($usuario, $nombre, $apellido, $dni);
 
             return $this->redirectToRoute('ver_datos_usuario');
         }
