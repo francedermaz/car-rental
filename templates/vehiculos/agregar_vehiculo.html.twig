@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agregar Vehículo{% endblock %}
+
+{% block page_stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/agregar_vehiculo.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include 'header.html.twig' %}
+
+    <div class="agregar-container">
+        <h1>Agregar un Nuevo Vehículo</h1>
+        <form method="post" action="{{ path('agregar_vehiculo') }}" class="agregar-form">
+            <div class="form-group">
+                <label for="marca">Marca:</label>
+                <input type="text" name="marca" id="marca" placeholder="Ejemplo: Toyota" required>
+            </div>
+
+            <div class="form-group">
+                <label for="modelo">Modelo:</label>
+                <input type="text" name="modelo" id="modelo" placeholder="Ejemplo: Corolla" required>
+            </div>
+
+            <div class="form-group">
+                <label for="year">Año:</label>
+                <input type="number" name="year" id="year" min="1886" max="{{ "now"|date("Y") }}" placeholder="Ejemplo: 2020" required>
+            </div>
+
+            <div class="form-group">
+                <label for="valor">Valor ($):</label>
+                <input type="number" name="valor" id="valor" step="0.01" placeholder="Ejemplo: 15000.00" required>
+            </div>
+
+            <div class="form-group">
+                <label for="detalle">Detalle:</label>
+                <textarea name="detalle" id="detalle" rows="5" placeholder="Ejemplo: Sedán, motor 1.8L, automático" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="imagen">URL de la Imagen:</label>
+                <input type="url" name="imagen" id="imagen" placeholder="Ejemplo: https://example.com/imagen.jpg" required>
+            </div>
+
+            <button type="submit" class="button">Agregar Vehículo</button>
+        </form>
+    </div>
+{% endblock %}
+
