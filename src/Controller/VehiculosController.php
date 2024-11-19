@@ -45,8 +45,8 @@ class VehiculosController extends AbstractController
             // verificar q el nombre tiene dos palabras (marca y modelo)
             $nombreArray = explode(' ', $nombre);
             if (count($nombreArray) >= 2) {
-                $vehiculo->setMarca($nombreArray[0]);  
-                $vehiculo->setModelo($nombreArray[1]); 
+                $vehiculo->setMarca($nombreArray[0]);
+                $vehiculo->setModelo($nombreArray[1]);
             }
         }
         if ($descripcion) {
@@ -62,5 +62,19 @@ class VehiculosController extends AbstractController
         $vehiculoManager->guardarVehiculo($vehiculo);
 
         return $this->redirectToRoute('detalle_vehiculo', ['id' => $id]);
+    }
+
+    #[Route('/vehiculo/eliminar/{id}', name: 'eliminar_vehiculo', methods: ['POST'])]
+    public function eliminarVehiculo(VehiculoManager $vehiculoManager, string $id): Response
+    {
+        $vehiculo = $vehiculoManager->getVehiculo($id);
+        if ($vehiculo) {
+            $vehiculoManager->eliminarVehiculo($vehiculo);
+            $this->addFlash('success', '¡El vehículo ha sido eliminado con éxito!');
+        } else {
+            $this->addFlash('error', 'El vehículo no existe.');
+        }
+
+        return $this->redirectToRoute('app_home');
     }
 }

@@ -23,14 +23,12 @@
 
             <!-- Información del vehículo (Nombre, Descripción y Valor) -->
             <div class="detalle-info">
-                <!-- Formulario para editar nombre -->
                 <form method="post" action="{{ path('actualizar_vehiculo', {'id': vehiculo.id}) }}">
                     <div class="form-group">
                         <label for="nombre">Nombre del Auto:</label>
                         <input type="text" name="nombre" id="nombre" value="{{ vehiculo.marca }} {{ vehiculo.modelo }}" required>
                     </div>
 
-                    <!-- Formulario para editar descripción -->
                     <div class="form-group">
                         <label for="descripcion">Descripción:</label>
                         <textarea name="descripcion" id="descripcion" rows="10" required>{{ vehiculo.detalle }}</textarea>
@@ -45,8 +43,12 @@
                     <!-- Botón para confirmar cambios -->
                     <button type="submit" class="button">Confirmar cambios</button>
                 </form>
+
+                <!-- Formulario para eliminar vehículo -->
+                <form method="post" action="{{ path('eliminar_vehiculo', {'id': vehiculo.id}) }}" style="display:inline;">
+                    <button type="submit" class="button delete-button">Eliminar Vehículo</button>
+                </form>
             </div>
         </div>
     </div>
 {% endblock %}
-

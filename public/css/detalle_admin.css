@@ -95,6 +95,34 @@ form button[type="submit"] {
     font-size: 1.2em;
     cursor: pointer;
     text-align: center;
+    border: none;
+}
+
+form button.delete-button {
+    background-color: #dc3545;
+}
+
+form button.delete-button:hover {
+    background-color: #c82333;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+form input:focus, form textarea:focus {
+    outline-color: #007bff;
+}
+
+/* Contenedor para alinear botones */
+.button-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+form button {
+    margin: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }

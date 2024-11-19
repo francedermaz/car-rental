@@ -24,14 +24,20 @@ class VehiculoManager
 
     public function getVehiculo(string $id)
     {
-        $vehiculo = $this->vehiculoRepository->find($id);
-        return $vehiculo;
+        return $this->vehiculoRepository->find($id);
     }
 
-    // METODO GUARDAR CAMBIOS
+    // Método para guardar cambios en un vehículo
     public function guardarVehiculo(Vehiculo $vehiculo): void
     {
-        $this->entityManager->persist($vehiculo);  
-        $this->entityManager->flush();             
+        $this->entityManager->persist($vehiculo);
+        $this->entityManager->flush();
+    }
+
+    // Método para eliminar un vehículo
+    public function eliminarVehiculo(Vehiculo $vehiculo): void
+    {
+        $this->entityManager->remove($vehiculo);
+        $this->entityManager->flush();
     }
 }
