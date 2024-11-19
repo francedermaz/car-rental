@@ -11,17 +11,15 @@
 
     <div class="detalle-container">
         <div class="detalle-card">
-            <!-- Imagen y formulario para cambiar la imagen -->
             <div class="detalle-image">
                 <img src="{{ vehiculo.imagen }}" alt="{{ vehiculo.marca }} {{ vehiculo.modelo }}" class="car-image">
-                <form method="post" action="{{ path('actualizar_vehiculo', {'id': vehiculo.id}) }}">
+                <form method="post" action="{{ path('actualizar_vehiculo', {'id': vehiculo.id}) }}" class="form-image">
                     <label for="imagen">Nuevo link de imagen:</label>
                     <input type="url" name="imagen" id="imagen" value="{{ vehiculo.imagen }}">
                     <button type="submit" class="button">Cambiar Imagen</button>
                 </form>
             </div>
 
-            <!-- Información del vehículo (Nombre, Descripción, Año y Valor) -->
             <div class="detalle-info">
                 <form method="post" action="{{ path('actualizar_vehiculo', {'id': vehiculo.id}) }}">
                     <div class="form-group">
@@ -34,25 +32,21 @@
                         <textarea name="descripcion" id="descripcion" rows="10" required>{{ vehiculo.detalle }}</textarea>
                     </div>
 
-                    <!-- Formulario para editar el año -->
                     <div class="form-group">
                         <label for="anio">Año del Vehículo:</label>
                         <input type="number" name="anio" id="anio" value="{{ vehiculo.anio }}" required>
                     </div>
 
-                    <!-- Formulario para editar valor -->
                     <div class="form-group">
                         <label for="valor">Valor del Vehículo:</label>
                         <input type="number" name="valor" id="valor" value="{{ vehiculo.valor }}" required>
                     </div>
 
-                    <!-- Botón para confirmar cambios -->
-                    <button type="submit" class="button">Confirmar cambios</button>
+                    <button type="submit" class="button-detail">Confirmar cambios</button>
                 </form>
 
-                <!-- Formulario para eliminar vehículo -->
                 <form method="post" action="{{ path('eliminar_vehiculo', {'id': vehiculo.id}) }}" style="display:inline;">
-                    <button type="submit" class="button delete-button">Eliminar Vehículo</button>
+                    <button type="submit" class="button-detail delete-button">Eliminar Vehículo</button>
                 </form>
             </div>
         </div>

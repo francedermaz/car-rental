@@ -1,10 +1,7 @@
 .home-container {
-    background-color: white;
     width: 100%;
-    height: calc(100vh - 60px);
     box-sizing: border-box;
     text-align: center;
-    margin-top: 60px;
 }
 
 .title {
@@ -83,7 +80,7 @@
     align-items: center;
     height: 40px;
     width: 40px;
-    background-color: #66ed74;
+    background-color: #5dfa6d;
     border: 1px solid transparent;
     border-radius: 5px;
     transition: background-color 0.3s ease; 
@@ -91,7 +88,7 @@
 
 .button-add-auto:hover {
     cursor: pointer;
-    background-color: #37d747;
+    background-color: rgb(43, 218, 61);
 }
 
 .image-agregar {

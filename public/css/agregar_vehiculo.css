@@ -1,10 +1,12 @@
 .agregar-container {
-    height: calc(130vh - 60px);
-    margin: 0 auto;
-    padding: 30px;
-    margin-top: 300px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3fcff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
     border-radius: 8px;
     text-align: center;
 }
@@ -20,6 +22,24 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.form-columns {
+    display: flex;
+    gap: 60px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form-column, .form-columnTwo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-columnTwo{
+    margin-right: 1.75em;
 }
 
 .form-group {
@@ -45,17 +65,6 @@
     transition: border-color 0.3s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #007bff;
-}
-
-.form-group input[type="number"]::-webkit-outer-spin-button,
-.form-group input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
 textarea {
     resize: vertical;
 }
@@ -70,35 +79,3 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
-button:hover {
-    background-color: #0056b3;
-}
-
-input::placeholder,
-textarea::placeholder {
-    color: #aaa;
-    font-style: italic;
-}
-
-input:focus,
-textarea:focus {
-    outline: none;
-    border: 2px solid #007bff;
-}
-
-button:active {
-    background-color: #004080;
-}
-
-.agregar-container .form-group {
-    margin-bottom: 20px;
-}
-
-.agregar-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
