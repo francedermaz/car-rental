@@ -24,12 +24,18 @@ class ReservaController extends AbstractController
             $usuario = $this->getUser();
             $reservaManager->crearReserva($usuario, $vehiculo, $fechaInicio, $fechaFinalizacion, $cantidadPersonas, $total);
 
-            return $this->render('reserva/confirmacion_reserva.html.twig');
+            return $this->redirectToRoute('reserva_success');
         }
 
         return $this->render('reserva/reserva.html.twig', [
             'vehiculo' => $vehiculo
         ]);
+    }
+
+    #[Route('/reserva/success', name: 'reserva_success')]
+    public function success(): Response
+    {
+        return $this->render('reserva/success.html.twig');
     }
 
     #[Route('/reservas', name: 'reservas_usuario')]
@@ -44,15 +50,15 @@ class ReservaController extends AbstractController
         ]);
     }
 
-    #[Route('/ordenes', name: 'ordenes_admin')]
-    public function obtenerOrdenesAdmin(ReservaManager $reservaManager): Response
-    {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'No tienes permiso para acceder a esta página.');
+    // #[Route('/admin/reservas', name: 'reservas_admin')]
+    // public function obtenerReservasAdmin(ReservaManager $reservaManager): Response
+    // {
+    //     $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'No tienes permiso para acceder a esta página.');
 
-        $reservas = $reservaManager->obtenerTodasLasOrdenes();
+    //     $reservas = $reservaManager->obtenerTodasLasReservas();
 
-        return $this->render('reserva/ordenes.html.twig', [
-            'reservas' => $reservas,
-        ]);
-    }
+    //     return $this->render('admin/lista_reservas.html.twig', [
+    //         'reservas' => $reservas,
+    //     ]);
+    // }
 }
