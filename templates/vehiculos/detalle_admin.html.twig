@@ -21,7 +21,7 @@
                 </form>
             </div>
 
-            <!-- Información del vehículo (Nombre, Descripción y Valor) -->
+            <!-- Información del vehículo (Nombre, Descripción, Año y Valor) -->
             <div class="detalle-info">
                 <form method="post" action="{{ path('actualizar_vehiculo', {'id': vehiculo.id}) }}">
                     <div class="form-group">
@@ -32,6 +32,12 @@
                     <div class="form-group">
                         <label for="descripcion">Descripción:</label>
                         <textarea name="descripcion" id="descripcion" rows="10" required>{{ vehiculo.detalle }}</textarea>
+                    </div>
+
+                    <!-- Formulario para editar el año -->
+                    <div class="form-group">
+                        <label for="anio">Año del Vehículo:</label>
+                        <input type="number" name="anio" id="anio" value="{{ vehiculo.anio }}" required>
                     </div>
 
                     <!-- Formulario para editar valor -->
