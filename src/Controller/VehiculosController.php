@@ -39,9 +39,10 @@ class VehiculosController extends AbstractController
         $nombre = $request->request->get('nombre');
         $descripcion = $request->request->get('descripcion');
         $imagen = $request->request->get('imagen');
+        $valor = $request->request->get('valor'); 
 
         if ($nombre) {
-            // verificar q el nombre tiene dos palabras, marca y modelo
+            // verificar q el nombre tiene dos palabras (marca y modelo)
             $nombreArray = explode(' ', $nombre);
             if (count($nombreArray) >= 2) {
                 $vehiculo->setMarca($nombreArray[0]);  
@@ -54,10 +55,11 @@ class VehiculosController extends AbstractController
         if ($imagen) {
             $vehiculo->setImagen($imagen);
         }
+        if ($valor) { 
+            $vehiculo->setValor((float) $valor);
+        }
 
         $vehiculoManager->guardarVehiculo($vehiculo);
-
-        //$this->addFlash('success', '¡Los cambios se han aplicado con éxito!');
 
         return $this->redirectToRoute('detalle_vehiculo', ['id' => $id]);
     }
