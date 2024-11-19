@@ -58,4 +58,9 @@ class ReservaManager
     {
         return $this->reservaRepository->findBy(['usuario' => $usuario]);
     }
+
+    public function obtenerTodasLasOrdenes()
+    {
+        return $this->reservaRepository->findAll();
+    }
 }

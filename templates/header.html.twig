@@ -9,7 +9,11 @@
     </div>
 
     <nav class="nav-links">
-        <a href="{{ path('reservas_usuario') }}" class="reservas-link">Mis Reservas</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('ordenes_admin') }}" class="reservas-link">Órdenes</a>
+        {% else %}
+            <a href="{{ path('reservas_usuario') }}" class="reservas-link">Mis Reservas</a>
+        {% endif %}
         <a href="{{ path('ver_datos_usuario') }}" class="user-icon">
             <img src="{{ asset('images/user.png') }}" alt="Usuario" class="user-image">
         </a>
