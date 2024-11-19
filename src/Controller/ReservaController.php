@@ -49,16 +49,16 @@ class ReservaController extends AbstractController
             'reservas' => $reservas,
         ]);
     }
+    
+    #[Route('/ordenes', name: 'ordenes_admin')]
+    public function obtenerOrdenesAdmin(ReservaManager $reservaManager): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'No tienes permiso para acceder a esta página.');
 
-    // #[Route('/admin/reservas', name: 'reservas_admin')]
-    // public function obtenerReservasAdmin(ReservaManager $reservaManager): Response
-    // {
-    //     $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'No tienes permiso para acceder a esta página.');
+        $reservas = $reservaManager->obtenerTodasLasOrdenes();
 
-    //     $reservas = $reservaManager->obtenerTodasLasReservas();
-
-    //     return $this->render('admin/lista_reservas.html.twig', [
-    //         'reservas' => $reservas,
-    //     ]);
-    // }
+        return $this->render('reserva/ordenes.html.twig', [
+            'reservas' => $reservas,
+        ]);
+    }
 }
