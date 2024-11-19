@@ -33,11 +33,12 @@ class VehiculoManager
         $this->entityManager->persist($vehiculo);
         $this->entityManager->flush();
     }
-
+  
     public function eliminarVehiculo(Vehiculo $vehiculo): void
     {
         $this->entityManager->remove($vehiculo);
         $this->entityManager->flush();
+
     }
 
     public function agregarVehiculo(

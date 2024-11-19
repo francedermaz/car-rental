@@ -58,10 +58,11 @@ class VehiculosController extends AbstractController
         $nombre = $request->request->get('nombre');
         $descripcion = $request->request->get('descripcion');
         $imagen = $request->request->get('imagen');
-        $valor = $request->request->get('valor'); 
+        $valor = $request->request->get('valor');
+        $anio = $request->request->get('anio');  // Añadimos el año
 
         if ($nombre) {
-            // verificar q el nombre tiene dos palabras (marca y modelo)
+            // verificar que el nombre tiene dos palabras (marca y modelo)
             $nombreArray = explode(' ', $nombre);
             if (count($nombreArray) >= 2) {
                 $vehiculo->setMarca($nombreArray[0]);
@@ -76,6 +77,9 @@ class VehiculosController extends AbstractController
         }
         if ($valor) { 
             $vehiculo->setValor((float) $valor);
+        }
+        if ($anio) { 
+            $vehiculo->setAnio((int) $anio);  // Guardamos el año
         }
 
         $vehiculoManager->guardarVehiculo($vehiculo);
