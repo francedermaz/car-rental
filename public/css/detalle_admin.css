@@ -74,21 +74,39 @@ form textarea {
     height: 250px; 
 }
 
-form button[type="submit"] {
+form button {
     background-color: #28a745;
     color: white;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
+    border: none;
 }
 
-form button[type="submit"]:hover {
+form button.delete-button {
+    background-color: #dc3545;
+}
+
+form button.delete-button:hover {
+    background-color: #c82333;
+}
+
+form button:hover {
     background-color: #218838;
 }
 
-form input[type="url"]:focus,
-form input[type="text"]:focus,
-form textarea:focus {
+form input:focus, form textarea:focus {
     outline-color: #007bff;
+}
+
+/* Contenedor para alinear botones */
+.button-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+form button {
+    margin: 0;
 }
