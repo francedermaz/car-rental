@@ -34,10 +34,28 @@ class VehiculoManager
         $this->entityManager->flush();
     }
 
-    // Método para eliminar un vehículo
     public function eliminarVehiculo(Vehiculo $vehiculo): void
     {
         $this->entityManager->remove($vehiculo);
         $this->entityManager->flush();
+    }
+
+    public function agregarVehiculo(
+        string $marca,
+        string $modelo,
+        ?string $detalle,
+        ?string $imagen,
+        int $year,
+        float $valor
+    ) {
+        $vehiculo = new Vehiculo();
+        $vehiculo->setMarca($marca)
+            ->setModelo($modelo)
+            ->setDetalle($detalle ?? '')
+            ->setImagen($imagen ?? '')
+            ->setYear($year)
+            ->setValor($valor);
+
+        $this->guardarVehiculo($vehiculo);
     }
 }

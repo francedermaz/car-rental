@@ -69,3 +69,32 @@
 .button:hover {
     background-color: #0056b3;
 }
+
+.header-car{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px
+}
+
+.button-add-auto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    background-color: #66ed74;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; 
+}
+
+.button-add-auto:hover {
+    cursor: pointer;
+    background-color: #37d747;
+}
+
+.image-agregar {
+    height: 20px;
+    width: 20px;
+}
