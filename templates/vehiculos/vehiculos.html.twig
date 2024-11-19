@@ -10,7 +10,17 @@
     {% include 'header.html.twig' %}
     
     <div class="home-container">
-        <h1 class="title">Elegí que auto querés reservar</h1>
+        <div class="header-car">        
+            {% if is_granted('ROLE_ADMIN') %}
+                <h1 class="title">Gestioná tus vehículos en alquiler</h1>
+                    <a href="{{ path('agregar_vehiculo') }}" class="button-add-auto">
+                        <img src="{{ asset('images/add-car.webp') }}" alt="Agregar auto" class="image-agregar">
+                    </a>
+            {% else %}
+                <h1 class="title">Elegí que auto querés reservar</h1>
+            {% endif %}
+        </div>
+
         <div class="vehiculos-container">
             {% for vehiculo in vehiculos %}
                 <div class="vehiculo-card">
