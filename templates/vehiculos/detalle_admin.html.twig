@@ -3,7 +3,7 @@
 {% block title %}Detalle - {{ vehiculo.marca }} {{ vehiculo.modelo }}{% endblock %}
 
 {% block page_stylesheets %}
-    <link rel="stylesheet" rel="preload" href="{{ asset('css/detalle.css') }}">
+    <link rel="stylesheet" rel="preload" href="{{ asset('css/detalle_admin.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -21,7 +21,7 @@
                 </form>
             </div>
 
-            <!-- Información del vehículo (Nombre y Descripción) -->
+            <!-- Información del vehículo (Nombre, Descripción y Valor) -->
             <div class="detalle-info">
                 <!-- Formulario para editar nombre -->
                 <form method="post" action="{{ path('actualizar_vehiculo', {'id': vehiculo.id}) }}">
@@ -34,6 +34,12 @@
                     <div class="form-group">
                         <label for="descripcion">Descripción:</label>
                         <textarea name="descripcion" id="descripcion" rows="10" required>{{ vehiculo.detalle }}</textarea>
+                    </div>
+
+                    <!-- Formulario para editar valor -->
+                    <div class="form-group">
+                        <label for="valor">Valor del Vehículo:</label>
+                        <input type="number" name="valor" id="valor" value="{{ vehiculo.valor }}" required>
                     </div>
 
                     <!-- Botón para confirmar cambios -->
