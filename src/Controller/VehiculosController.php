@@ -32,6 +32,25 @@ class VehiculosController extends AbstractController
         return $this->render('vehiculos/detalle.html.twig', ['vehiculo' => $vehiculo]);
     }
 
+    #[Route('/vehiculos/agregar', name: 'agregar_vehiculo', methods: ['GET', 'POST'])]
+    public function agregarVehiculo(Request $request, VehiculoManager $vehiculoManager): Response
+    {
+
+        if ($request->isMethod('POST')) {
+            $marca = $request->request->get('marca');
+            $modelo = $request->request->get('modelo');
+            $detalle = $request->request->get('detalle');
+            $imagen = $request->request->get('imagen');
+            $year = $request->request->get('year');
+            $valor = $request->request->get('valor');
+
+            $vehiculoManager->agregarVehiculo($marca, $modelo, $detalle, $imagen, $year, $valor);
+            return $this->redirectToRoute('app_home');
+        }
+
+        return $this->render('vehiculos/agregar_vehiculo.html.twig');
+    }
+
     #[Route('/vehiculo/actualizar/{id}', name: 'actualizar_vehiculo', methods: ['POST'])]
     public function actualizarVehiculo(Request $request, VehiculoManager $vehiculoManager, string $id): Response
     {
@@ -40,7 +59,8 @@ class VehiculosController extends AbstractController
         $nombre = $request->request->get('nombre');
         $descripcion = $request->request->get('descripcion');
         $imagen = $request->request->get('imagen');
-        $valor = $request->request->get('valor'); 
+        $valor = $request->request->get('valor');
+        $anio = $request->request->get('anio');  // Añadimos el año
 
         if ($nombre) {
             // verificar que el nombre tiene dos palabras (marca y modelo)
@@ -58,6 +78,9 @@ class VehiculosController extends AbstractController
         }
         if ($valor) { 
             $vehiculo->setValor((float) $valor);
+        }
+        if ($anio) { 
+            $vehiculo->setAnio((int) $anio);  // Guardamos el año
         }
 
         $vehiculoManager->guardarVehiculo($vehiculo);

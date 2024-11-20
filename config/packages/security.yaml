@@ -41,6 +41,7 @@ security:
         - { path: ^/finalizar-reserva, roles: PUBLIC_ACCESS }
         - { path: ^/reservas_usuario, roles: PUBLIC_ACCESS }
         - { path: ^/reserva/success, roles: PUBLIC_ACCESS } 
+        - { path: ^/vehiculos/agregar, roles: PUBLIC_ACCESS } 
 
 
 when@test:

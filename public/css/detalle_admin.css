@@ -1,9 +1,6 @@
 .detalle-container {
-    background-color: #f0f8f8;
     width: 100%;
-    height: calc(100vh - 60px);
     box-sizing: border-box;
-    margin-top: 60px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -16,10 +13,8 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 3em; 
-    padding: 30px;
-    margin-top: 2.5em;
-    width: 90%;
-    max-width: 1200px;
+    padding: 1.875em;
+    min-width: 75em;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: white;
@@ -29,13 +24,18 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
     gap: 20px; 
+}
+
+.form-image{
+    width: 100%;
 }
 
 .car-image {
     width: 100%;
-    max-width: 500px;
+    max-width: 32em;
     height: auto;
     object-fit: contain;
     border-radius: 8px;
@@ -67,7 +67,7 @@ form label {
 form input,
 form textarea {
     width: 100%;
-    padding: 15px;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 6px;
     font-size: 1.1em;
@@ -114,14 +114,13 @@ form input:focus, form textarea:focus {
     outline-color: #007bff;
 }
 
-/* Contenedor para alinear botones */
 .button-group {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-form button {
+form .button-detail {
     margin: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;

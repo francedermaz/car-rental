@@ -72,6 +72,19 @@ class Vehiculo
         return $this;
     }
 
+    // Aquí está el getter y setter para el año
+    public function getAnio(): ?int
+    {
+        return $this->year; // Retorna la propiedad 'year'
+    }
+
+    public function setAnio(int $anio): static
+    {
+        $this->year = $anio; // Establece la propiedad 'year'
+        
+        return $this;
+    }
+
     public function getYear(): ?int
     {
         return $this->year;

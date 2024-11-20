@@ -1,10 +1,8 @@
 .reserva-container{
-    background-color: white;
     width: 100%;
-    height: calc(100vh - 60px);
     box-sizing: border-box;
     text-align: center;
-    margin-top: 60px;
+    background: #f8f9fa;
 }
 
 .reserva-card{
