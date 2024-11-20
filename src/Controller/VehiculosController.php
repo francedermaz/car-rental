@@ -45,6 +45,7 @@ class VehiculosController extends AbstractController
             $valor = $request->request->get('valor');
 
             $vehiculoManager->agregarVehiculo($marca, $modelo, $detalle, $imagen, $year, $valor);
+            $this->addFlash('success', '¡El vehículo se ha añadido con éxito!');
             return $this->redirectToRoute('app_home');
         }
 
