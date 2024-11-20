@@ -86,6 +86,7 @@ class VehiculosController extends AbstractController
 
         $vehiculoManager->guardarVehiculo($vehiculo);
 
+        $this->addFlash('success', '¡El vehículo se ha modificado con éxito!');
         return $this->redirectToRoute('detalle_vehiculo', ['id' => $id]);
     }
 
