@@ -1,10 +1,8 @@
 .detalle-container {
     background-color: #f0f8f8;
     width: 100%;
-    height: calc(100vh - 60px);
     box-sizing: border-box;
     text-align: center;
-    margin-top: 60px;
 }
 
 .detalle-card{
