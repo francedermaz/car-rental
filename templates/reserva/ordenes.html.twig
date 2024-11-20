@@ -18,6 +18,7 @@
                     <tr>
                         <th>Nombre y Apellido</th>
                         <th>DNI</th>
+                        <th>Email</th>
                         <th>Vehículo</th>
                         <th>Fecha Inicio</th>
                         <th>Fecha Finalización</th>
@@ -30,6 +31,7 @@
                         <tr>
                             <td>{{ reserva.usuario.nombre }} {{ reserva.usuario.apellido }}</td>
                             <td>{{ reserva.usuario.dni }}</td>
+                            <td>{{ reserva.usuario.email }}</td>
                             <td>{{ reserva.vehiculo.marca }} {{ reserva.vehiculo.modelo }}</td>
                             <td>{{ reserva.fechaInicio|date('d-m-Y') }}</td>
                             <td>{{ reserva.fechaFinalizacion|date('d-m-Y') }}</td>

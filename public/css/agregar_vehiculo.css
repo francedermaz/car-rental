@@ -1,4 +1,4 @@
-.agregar-container {
+.vehiculo-nuevo-container {
     display: flex;
     flex-direction: column;
     padding: 40px;
@@ -11,51 +11,52 @@
     text-align: center;
 }
 
-.agregar-container h1 {
+.vehiculo-nuevo-container h1 {
     font-size: 2.2rem;
     color: #333;
     margin-bottom: 20px;
     font-weight: 600;
 }
 
-.agregar-form {
+.vehiculo-nuevo-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.form-columns {
+.nuevo-form-columns {
     display: flex;
     gap: 60px;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.form-column, .form-columnTwo {
+.nuevo-form-column,
+.nuevo-form-column-secundario {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.form-columnTwo{
+.nuevo-form-column-secundario {
     margin-right: 1.75em;
 }
 
-.form-group {
+.nuevo-form-group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.form-group label {
+.nuevo-form-group label {
     font-size: 1rem;
     color: #666;
     margin-bottom: 8px;
 }
 
-.form-group input,
-.form-group textarea {
+.nuevo-form-group input,
+.nuevo-form-group textarea {
     width: 100%;
     padding: 12px;
     font-size: 1rem;
@@ -69,7 +70,7 @@ textarea {
     resize: vertical;
 }
 
-button {
+.boton-nuevo-vehiculo {
     padding: 14px;
     font-size: 1rem;
     color: #fff;
