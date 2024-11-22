@@ -20,7 +20,14 @@ class RegisterController extends AbstractController
             $email = $request->request->get('username');
             $password = $request->request->get('password');
 
+            if ($usuarioManager->existeEmail($email)) {
+                $this->addFlash('error', 'El correo electrónico ya está registrado.');
+                return $this->redirectToRoute('registrar_usuario');
+            }
+
             $usuarioManager->registrarUsuario($nombre, $apellido, $dni, $email, $password);
+            $this->addFlash('success', 'Registro exitoso. ¡Ahora puedes iniciar sesión!');
+
             return $this->redirectToRoute('app_login');
         }
 

@@ -32,6 +32,11 @@ class UsuarioController extends AbstractController
             $email = $request->request->get('email');
             $password = $request->request->get('password');
 
+            if ($email !== $usuario->getEmail() && $usuarioManager->existeEmail($email)) {
+                $this->addFlash('error', 'El correo electrónico ya está registrado por otro usuario.');
+                return $this->redirectToRoute('editar_datos_usuario');
+            }
+
             $usuarioManager->actualizarUsuario($usuario, $nombre, $apellido, $dni, $email, $password);
             $this->addFlash('success', '¡Tus datos se modificaron con éxito!');
 

@@ -27,7 +27,6 @@ class VehiculoManager
         return $this->vehiculoRepository->find($id);
     }
 
-    // Método para guardar cambios en un vehículo
     public function guardarVehiculo(Vehiculo $vehiculo): void
     {
         $this->entityManager->persist($vehiculo);
