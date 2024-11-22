@@ -69,11 +69,16 @@ class ReservaController extends AbstractController
     }
 
     #[Route('/ordenes', name: 'ordenes_admin')]
-    public function obtenerOrdenesAdmin(ReservaManager $reservaManager): Response
+    public function obtenerOrdenesAdmin(Request $request, ReservaManager $reservaManager): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'No tienes permiso para acceder a esta página.');
 
-        $reservas = $reservaManager->obtenerTodasLasOrdenes();
+        // Obtención de las fechas de inicio y finalización desde los filtros
+        $fechaInicio = $request->query->get('fecha_inicio') ? new \DateTime($request->query->get('fecha_inicio')) : null;
+        $fechaFinalizacion = $request->query->get('fecha_finalizacion') ? new \DateTime($request->query->get('fecha_finalizacion')) : null;
+
+        // Llama al método para obtener las reservas filtradas por fecha
+        $reservas = $reservaManager->obtenerOrdenesFiltradas($fechaInicio, $fechaFinalizacion);
 
         return $this->render('reserva/ordenes.html.twig', [
             'reservas' => $reservas,
