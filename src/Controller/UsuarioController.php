@@ -33,6 +33,7 @@ class UsuarioController extends AbstractController
             $password = $request->request->get('password');
 
             $usuarioManager->actualizarUsuario($usuario, $nombre, $apellido, $dni, $email, $password);
+            $this->addFlash('success', '¡Tus datos se modificaron con éxito!');
 
             return $this->redirectToRoute('ver_datos_usuario');
         }

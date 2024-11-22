@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Manager\VehiculoManager;
+use App\Repository\ReservaRepository; // Importar el repositorio de Reserva
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -44,6 +45,7 @@ class VehiculosController extends AbstractController
             $valor = $request->request->get('valor');
 
             $vehiculoManager->agregarVehiculo($marca, $modelo, $detalle, $imagen, $year, $valor);
+            $this->addFlash('success', '¡El vehículo se ha añadido con éxito!');
             return $this->redirectToRoute('app_home');
         }
 
@@ -84,19 +86,29 @@ class VehiculosController extends AbstractController
 
         $vehiculoManager->guardarVehiculo($vehiculo);
 
+        $this->addFlash('success', '¡El vehículo se ha modificado con éxito!');
         return $this->redirectToRoute('detalle_vehiculo', ['id' => $id]);
     }
 
     #[Route('/vehiculo/eliminar/{id}', name: 'eliminar_vehiculo', methods: ['POST'])]
-    public function eliminarVehiculo(VehiculoManager $vehiculoManager, string $id): Response
+    public function eliminarVehiculo(VehiculoManager $vehiculoManager, ReservaRepository $reservaRepository, string $id): Response
     {
         $vehiculo = $vehiculoManager->getVehiculo($id);
-        if ($vehiculo) {
-            $vehiculoManager->eliminarVehiculo($vehiculo);
-            $this->addFlash('success', '¡El vehículo ha sido eliminado con éxito!');
-        } else {
+
+        if (!$vehiculo) {
             $this->addFlash('error', 'El vehículo no existe.');
+            return $this->redirectToRoute('app_home');
         }
+
+        $reservas = $reservaRepository->findBy(['vehiculo' => $vehiculo]);
+
+        if (count($reservas) > 0) {
+            $this->addFlash('error', 'No se puede eliminar el vehículo porque tiene reservas asociadas.');
+            return $this->redirectToRoute('detalle_vehiculo', ['id' => $id]);
+        }
+
+        $vehiculoManager->eliminarVehiculo($vehiculo);
+        $this->addFlash('success', '¡El vehículo ha sido eliminado con éxito!');
 
         return $this->redirectToRoute('app_home');
     }
