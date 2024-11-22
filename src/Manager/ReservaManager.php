@@ -26,23 +26,23 @@ class ReservaManager
         $dias = $fechaInicio->diff($fechaFinalizacion)->days;
 
         if ($dias > 0) {
-            // TODO: ver la cantidad de personas, tiene relevancia?
-            return $dias * $vehiculo->getValor() * $cantidadPersonas;
+            return $dias * $vehiculo->getValor();
         }
 
         return null;
     }
 
-    public function crearReserva(Usuario $usuario, Vehiculo $vehiculo, \DateTime $fechaInicio, \DateTime $fechaFinalizacion, int $cantidadPersonas, float $total): Reserva
+    public function crearReserva(Usuario $usuario, Vehiculo $vehiculo, \DateTime $fechaInicio, \DateTime $fechaFinalizacion, int $cantidadPersonas): Reserva
     {
         $reserva = new Reserva();
         $reserva->setVehiculo($vehiculo);
         $reserva->setFechaInicio($fechaInicio);
         $reserva->setFechaFinalizacion($fechaFinalizacion);
         $reserva->setCantidadPersonas($cantidadPersonas);
-        // TODO: sumar total a la reserva
-        //$reserva->setTotal($total);
         $reserva->setUsuario($usuario);
+
+        $total = $vehiculo->getValor() * ($fechaFinalizacion->diff($fechaInicio)->days);
+        $reserva->setTotal($total);
 
         $this->entityManager->persist($reserva);
         $this->entityManager->flush();
@@ -62,5 +62,20 @@ class ReservaManager
     public function obtenerTodasLasOrdenes()
     {
         return $this->reservaRepository->findAll();
+    }
+
+    public function verificarDisponibilidad(Vehiculo $vehiculo, \DateTime $fechaInicio, \DateTime $fechaFinalizacion): bool
+    {
+        $reservas = $this->reservaRepository->findBy(['vehiculo' => $vehiculo]);
+
+        foreach ($reservas as $reserva) {
+            if (
+                ($fechaInicio <= $reserva->getFechaFinalizacion() && $fechaFinalizacion >= $reserva->getFechaInicio())
+            ) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

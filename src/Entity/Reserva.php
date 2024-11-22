@@ -31,6 +31,9 @@ class Reserva
     #[ORM\JoinColumn(nullable: false)]
     private ?Vehiculo $vehiculo = null;
 
+    #[ORM\Column]
+    private ?float $total = null; 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,6 +95,18 @@ class Reserva
     public function setVehiculo(?Vehiculo $vehiculo): static
     {
         $this->vehiculo = $vehiculo;
+
+        return $this;
+    }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(float $total): static
+    {
+        $this->total = $total;
 
         return $this;
     }

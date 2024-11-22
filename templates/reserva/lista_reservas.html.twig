@@ -28,7 +28,7 @@
                             <td>{{ reserva.fechaInicio|date('d-m-Y') }}</td>
                             <td>{{ reserva.fechaFinalizacion|date('d-m-Y') }}</td>
                             <td>{{ reserva.cantidadPersonas }}</td>
-                            <td>${{ reserva.vehiculo.valor * reserva.cantidadPersonas * reserva.fechaFinalizacion.diff(reserva.fechaInicio).days }}</td>
+                            <td>${{ reserva.total }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
