@@ -26,8 +26,7 @@ class ReservaManager
         $dias = $fechaInicio->diff($fechaFinalizacion)->days;
 
         if ($dias > 0) {
-            // TODO: ver la cantidad de personas, tiene relevancia?
-            return $dias * $vehiculo->getValor() * $cantidadPersonas;
+            return $dias * $vehiculo->getValor();
         }
 
         return null;
@@ -40,9 +39,8 @@ class ReservaManager
         $reserva->setFechaInicio($fechaInicio);
         $reserva->setFechaFinalizacion($fechaFinalizacion);
         $reserva->setCantidadPersonas($cantidadPersonas);
-        // TODO: sumar total a la reserva
-        //$reserva->setTotal($total);
         $reserva->setUsuario($usuario);
+        $reserva->setTotal($total);
 
         $this->entityManager->persist($reserva);
         $this->entityManager->flush();

@@ -19,7 +19,7 @@ class ReservaController extends AbstractController
             $fechaInicio = new \DateTime($request->request->get('fecha_inicio'));
             $fechaFinalizacion = new \DateTime($request->request->get('fecha_finalizacion'));
             $cantidadPersonas = $request->request->get('cantidad_personas');
-            $total = $vehiculo->getValor() * ($fechaFinalizacion->diff($fechaInicio)->days) * $cantidadPersonas;
+            $total = $vehiculo->getValor() * ($fechaFinalizacion->diff($fechaInicio)->days);
 
             $usuario = $this->getUser();
             $reservaManager->crearReserva($usuario, $vehiculo, $fechaInicio, $fechaFinalizacion, $cantidadPersonas, $total);
