@@ -10,6 +10,22 @@
     <div class="reserva-container">
         <h1 class="titulo-reservas">Órdenes</h1>
 
+        <!-- Botón para mostrar el filtro -->
+        <button class="btn-filtro" id="filtroButton">Filtros</button>
+
+        <!-- Formulario de filtro (inicialmente oculto) -->
+        <div id="filtroForm" style="display:none;">
+            <form method="get" action="{{ path('ordenes_admin') }}" class="filtro-form">
+                <label for="fecha_inicio">Fecha de Inicio</label>
+                <input type="date" id="fecha_inicio" name="fecha_inicio" value="{{ app.request.query.get('fecha_inicio') }}">
+
+                <label for="fecha_finalizacion">Fecha de Finalización</label>
+                <input type="date" id="fecha_finalizacion" name="fecha_finalizacion" value="{{ app.request.query.get('fecha_finalizacion') }}">
+
+                <button type="submit" class="btn-submit">Filtrar</button>
+            </form>
+        </div>
+
         {% if reservas is not empty %}
             <table class="tabla-reservas">
                 <thead>
@@ -43,4 +59,17 @@
             <p class="mensaje-no-reservas">No tenés reservas registradas.</p>
         {% endif %}
     </div>
+
+    <!-- Script para manejar la visualización del filtro -->
+    <script>
+        document.getElementById("filtroButton").onclick = function() {
+            var filtroForm = document.getElementById("filtroForm");
+            if (filtroForm.style.display === "none") {
+                filtroForm.style.display = "block";
+            } else {
+                filtroForm.style.display = "none";
+            }
+        };
+    </script>
+
 {% endblock %}
