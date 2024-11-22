@@ -25,9 +25,15 @@ class ReservaController extends AbstractController
                 $this->addFlash('error', 'La fecha de inicio no puede ser anterior a la fecha actual.');
                 return $this->redirectToRoute('reservar_vehiculo', ['vehiculo_id' => $vehiculo_id]);
             }
-    
+
             if ($fechaFinalizacion < $fechaInicio) {
                 $this->addFlash('error', 'La fecha de finalización debe ser igual o posterior a la fecha de inicio.');
+                return $this->redirectToRoute('reservar_vehiculo', ['vehiculo_id' => $vehiculo_id]);
+            }
+
+            $disponible = $reservaManager->verificarDisponibilidad($vehiculo, $fechaInicio, $fechaFinalizacion);
+            if (!$disponible) {
+                $this->addFlash('error', 'El vehículo ya está reservado en el rango de fechas seleccionado.');
                 return $this->redirectToRoute('reservar_vehiculo', ['vehiculo_id' => $vehiculo_id]);
             }
 
@@ -61,7 +67,7 @@ class ReservaController extends AbstractController
             'reservas' => $reservas,
         ]);
     }
-    
+
     #[Route('/ordenes', name: 'ordenes_admin')]
     public function obtenerOrdenesAdmin(ReservaManager $reservaManager): Response
     {

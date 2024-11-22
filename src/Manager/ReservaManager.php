@@ -63,4 +63,19 @@ class ReservaManager
     {
         return $this->reservaRepository->findAll();
     }
+
+    public function verificarDisponibilidad(Vehiculo $vehiculo, \DateTime $fechaInicio, \DateTime $fechaFinalizacion): bool
+    {
+        $reservas = $this->reservaRepository->findBy(['vehiculo' => $vehiculo]);
+
+        foreach ($reservas as $reserva) {
+            if (
+                ($fechaInicio <= $reserva->getFechaFinalizacion() && $fechaFinalizacion >= $reserva->getFechaInicio())
+            ) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
