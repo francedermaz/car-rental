@@ -18,11 +18,23 @@ class ReservaController extends AbstractController
         if ($request->isMethod('POST')) {
             $fechaInicio = new \DateTime($request->request->get('fecha_inicio'));
             $fechaFinalizacion = new \DateTime($request->request->get('fecha_finalizacion'));
+
+            $fechaActual = new \DateTime('now');
+
+            if ($fechaInicio < $fechaActual->setTime(0, 0)) {
+                $this->addFlash('error', 'La fecha de inicio no puede ser anterior a la fecha actual.');
+                return $this->redirectToRoute('reservar_vehiculo', ['vehiculo_id' => $vehiculo_id]);
+            }
+    
+            if ($fechaFinalizacion < $fechaInicio) {
+                $this->addFlash('error', 'La fecha de finalización debe ser igual o posterior a la fecha de inicio.');
+                return $this->redirectToRoute('reservar_vehiculo', ['vehiculo_id' => $vehiculo_id]);
+            }
+
             $cantidadPersonas = $request->request->get('cantidad_personas');
-            $total = $vehiculo->getValor() * ($fechaFinalizacion->diff($fechaInicio)->days);
 
             $usuario = $this->getUser();
-            $reservaManager->crearReserva($usuario, $vehiculo, $fechaInicio, $fechaFinalizacion, $cantidadPersonas, $total);
+            $reservaManager->crearReserva($usuario, $vehiculo, $fechaInicio, $fechaFinalizacion, $cantidadPersonas);
 
             return $this->redirectToRoute('reserva_success');
         }

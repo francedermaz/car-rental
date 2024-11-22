@@ -32,7 +32,7 @@ class ReservaManager
         return null;
     }
 
-    public function crearReserva(Usuario $usuario, Vehiculo $vehiculo, \DateTime $fechaInicio, \DateTime $fechaFinalizacion, int $cantidadPersonas, float $total): Reserva
+    public function crearReserva(Usuario $usuario, Vehiculo $vehiculo, \DateTime $fechaInicio, \DateTime $fechaFinalizacion, int $cantidadPersonas): Reserva
     {
         $reserva = new Reserva();
         $reserva->setVehiculo($vehiculo);
@@ -40,6 +40,8 @@ class ReservaManager
         $reserva->setFechaFinalizacion($fechaFinalizacion);
         $reserva->setCantidadPersonas($cantidadPersonas);
         $reserva->setUsuario($usuario);
+
+        $total = $vehiculo->getValor() * ($fechaFinalizacion->diff($fechaInicio)->days);
         $reserva->setTotal($total);
 
         $this->entityManager->persist($reserva);
