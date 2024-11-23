@@ -33,16 +33,21 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        # Rutas públicas (sin autenticación requerida)
+        - { path: ^/$, roles: PUBLIC_ACCESS }
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/register, roles: PUBLIC_ACCESS }
-        - { path: ^/, roles: PUBLIC_ACCESS }
-        - { path: ^/vehiculo, roles: PUBLIC_ACCESS }
-        - { path: ^/reservar, roles: PUBLIC_ACCESS }
-        - { path: ^/finalizar-reserva, roles: PUBLIC_ACCESS }
-        - { path: ^/reservas_usuario, roles: PUBLIC_ACCESS }
-        - { path: ^/reserva/success, roles: PUBLIC_ACCESS } 
-        - { path: ^/vehiculos/agregar, roles: PUBLIC_ACCESS } 
 
+        # Rutas accesibles solo para usuarios autenticados
+        - { path: ^/reserva, roles: ROLE_USER }
+
+        # Rutas accesibles solo para administradores
+        - { path: ^/ordenes, roles: ROLE_ADMIN }
+        - { path: ^/vehiculos/agregar, roles: ROLE_ADMIN }
+        - { path: ^/vehiculo/actualizar, roles: ROLE_ADMIN }
+        
+        # Administrador y usuarios
+        - { path: ^/usuario, roles: [ROLE_USER, ROLE_ADMIN]}
 
 when@test:
     security:
