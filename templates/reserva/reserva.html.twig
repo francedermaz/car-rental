@@ -19,7 +19,7 @@
                     <input type="date" id="fecha_finalizacion" name="fecha_finalizacion" required>
 
                     <label for="cantidad_personas">Cantidad de Personas:</label>
-                    <input type="number" id="cantidad_personas" name="cantidad_personas" required>
+                    <input type="number" id="cantidad_personas" name="cantidad_personas" required max="5">
                     <p><strong>Vehículo:</strong> {{ vehiculo.marca }} {{ vehiculo.modelo }}</p>
                     <p><strong>Valor Diario:</strong> ${{ vehiculo.valor }}</p>
                     <button type="submit">Reservar</button>
