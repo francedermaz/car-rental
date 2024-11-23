@@ -63,29 +63,7 @@ class VehiculosController extends AbstractController
         $valor = $request->request->get('valor');
         $anio = $request->request->get('anio');  // Añadimos el año
 
-        if ($nombre) {
-            // verificar que el nombre tiene dos palabras (marca y modelo)
-            $nombreArray = explode(' ', $nombre);
-            if (count($nombreArray) >= 2) {
-                $vehiculo->setMarca($nombreArray[0]);
-                $vehiculo->setModelo($nombreArray[1]);
-            }
-        }
-        if ($descripcion) {
-            $vehiculo->setDetalle($descripcion);
-        }
-        if ($imagen) {
-            $vehiculo->setImagen($imagen);
-        }
-        if ($valor) { 
-            $vehiculo->setValor((float) $valor);
-        }
-        if ($anio) { 
-            $vehiculo->setAnio((int) $anio);  // Guardamos el año
-        }
-
-        $vehiculoManager->guardarVehiculo($vehiculo);
-
+        $vehiculoManager->guardarVehiculo($vehiculo, $nombre, $descripcion, $imagen, $valor, $anio);
         $this->addFlash('success', '¡El vehículo se ha modificado con éxito!');
         return $this->redirectToRoute('detalle_vehiculo', ['id' => $id]);
     }

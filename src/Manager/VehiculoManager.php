@@ -27,17 +27,37 @@ class VehiculoManager
         return $this->vehiculoRepository->find($id);
     }
 
-    public function guardarVehiculo(Vehiculo $vehiculo): void
+    public function guardarVehiculo(Vehiculo $vehiculo, ?string $nombre, ?string $descripcion, ?string $imagen, ?string $valor, ?string $anio): void
     {
+        if ($nombre) {
+            // verificar que el nombre tiene dos palabras (marca y modelo)
+            $nombreArray = explode(' ', $nombre);
+            if (count($nombreArray) >= 2) {
+                $vehiculo->setMarca($nombreArray[0]);
+                $vehiculo->setModelo($nombreArray[1]);
+            }
+        }
+        if ($descripcion) {
+            $vehiculo->setDetalle($descripcion);
+        }
+        if ($imagen) {
+            $vehiculo->setImagen($imagen);
+        }
+        if ($valor) {
+            $vehiculo->setValor((float) $valor);
+        }
+        if ($anio) {
+            $vehiculo->setAnio((int) $anio);  // Guardamos el año
+        }
+
         $this->entityManager->persist($vehiculo);
         $this->entityManager->flush();
     }
-  
+
     public function eliminarVehiculo(Vehiculo $vehiculo): void
     {
         $this->entityManager->remove($vehiculo);
         $this->entityManager->flush();
-
     }
 
     public function agregarVehiculo(
@@ -56,6 +76,7 @@ class VehiculoManager
             ->setYear($year)
             ->setValor($valor);
 
-        $this->guardarVehiculo($vehiculo);
+        $this->entityManager->persist($vehiculo);
+        $this->entityManager->flush();
     }
 }
