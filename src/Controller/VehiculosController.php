@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Manager\VehiculoManager;
-use App\Repository\ReservaRepository; // Importar el repositorio de Reserva
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -69,7 +68,7 @@ class VehiculosController extends AbstractController
     }
 
     #[Route('/vehiculo/eliminar/{id}', name: 'eliminar_vehiculo', methods: ['POST'])]
-    public function eliminarVehiculo(VehiculoManager $vehiculoManager, ReservaRepository $reservaRepository, string $id): Response
+    public function eliminarVehiculo(VehiculoManager $vehiculoManager, string $id): Response
     {
         $vehiculo = $vehiculoManager->getVehiculo($id);
 
@@ -78,7 +77,7 @@ class VehiculosController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
-        $reservas = $reservaRepository->findBy(['vehiculo' => $vehiculo]);
+        $reservas = $vehiculoManager->encontrarVehiculosEnReserva($vehiculo);
 
         if (count($reservas) > 0) {
             $this->addFlash('error', 'No se puede eliminar el vehículo porque tiene reservas asociadas.');

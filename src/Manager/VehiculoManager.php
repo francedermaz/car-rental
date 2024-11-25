@@ -5,15 +5,18 @@ namespace App\Manager;
 use App\Repository\VehiculoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Vehiculo;
+use App\Repository\ReservaRepository;
 
 class VehiculoManager
 {
     private $vehiculoRepository;
+    private $reservaRepository;
     private $entityManager;
 
-    public function __construct(VehiculoRepository $vehiculoRepository, EntityManagerInterface $entityManager)
+    public function __construct(VehiculoRepository $vehiculoRepository, ReservaRepository $reservaRepository, EntityManagerInterface $entityManager)
     {
         $this->vehiculoRepository = $vehiculoRepository;
+        $this->reservaRepository = $reservaRepository;
         $this->entityManager = $entityManager;
     }
 
@@ -78,5 +81,10 @@ class VehiculoManager
 
         $this->entityManager->persist($vehiculo);
         $this->entityManager->flush();
+    }
+
+    public function encontrarVehiculosEnReserva(Vehiculo $vehiculo)
+    {
+        return $this->reservaRepository->findBy(['vehiculo' => $vehiculo]);
     }
 }
